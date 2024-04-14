@@ -1,17 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Atendente </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-content>
+      <ion-button (click)="senhasService.chamarSenha()">CHAMAR SENHA</ion-button>
+      <ion-button (click)="senhasService.limparPainel()">LIMPAR PAINEL</ion-button>
+    </ion-card-content>
+  </ion-card>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>Senhas a chamar:</ion-list-header>
+        <ion-item *ngFor="let senha of senhasService.senhasFaltandoChamar">
+          <ion-icon
+            [name]="senha.icon"
+            slot="start"
+            [color]="senha.color"
+          ></ion-icon>
+          {{ senha.senha }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
 </ion-content>
