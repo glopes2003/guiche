@@ -9,11 +9,14 @@ export class SenhasService {
   public senhasPrior: number = 0;
   public senhasExame: number = 0;
   public senhasTotal: number = 0;
-  public senhaAtendidaGeral: number = 0;
+  public atendidaGeral: number = 0;
+  public atendidaPrior: number = 0;
+  public atendidaExame: number = 0;
   public inputNovaSenha: string = '';
   public senhasArray: any = { SG: [], SP: [], SE: [] };
   public senhasFaltandoChamar: any[] = [];
   public senhasChamadas: any[] = [];
+  public relatorioSenhasAtendidas: any[] = [];
 
   // Função para adicionar uma nova senha ao array e exibir na tela
   senhaRetirada(tipoSenha: string = '') {
@@ -64,15 +67,15 @@ export class SenhasService {
     this.senhasFaltandoChamar.push({ ...senhaRetiradaObjeto });
     this.displaySenha();
   }
-
   //methods
   displaySenha() {
     console.log(this.senhasArray);
     console.log(this.senhasFaltandoChamar);
   }
+
   chamarSenha() {
-    if(this.senhasFaltandoChamar.length == 0) {
-      alert("Ainda não há senhas no painel de chamada!")
+    if (this.senhasFaltandoChamar.length == 0) {
+      alert('Ainda não há senhas no painel de chamada!');
     }
     let senhaPrioritariaEncontrada = false;
     if (this.senhasChamadas.length <= 4) {
@@ -88,9 +91,10 @@ export class SenhasService {
         let próximaSenha = this.senhasFaltandoChamar.shift();
         this.senhasChamadas.push(próximaSenha);
       }
+      this.displaySenhasAtendidas();
       this.displaySenha();
     } else {
-      alert("Limpe o painel!")
+      alert('Limpe o painel!');
     }
   }
   removerSenhaDoArray(senha: any) {
@@ -112,22 +116,9 @@ export class SenhasService {
     this.senhasExame++;
     this.senhasTotal++;
   }
-  atendidaGeral() {
-    this.senhaAtendidaGeral = 0; // Certifique-se de redefinir a contagem antes de percorrer o array
-    
-    for (let i = 0; i < this.senhasChamadas.length; i++) {
-      let senha = this.senhasChamadas[i];
-      if (senha.icon === 'warning') {
-        this.senhaAtendidaGeral++;
-      } else {
-        break; // Para o loop se a próxima senha atendida for diferente do ícone 'warning'
-      }
-    }
-  }
-  
 
   limparPainel() {
-    if (this.senhasChamadas.length >= 4 ) {
+    if (this.senhasChamadas.length >= 4) {
       this.senhasChamadas = [];
     } else if (this.senhasChamadas.length == 0) {
       alert('Ainda não há senhas no painel');
@@ -135,7 +126,31 @@ export class SenhasService {
       alert('Ainda há espaço no painel');
     }
   }
+
+  displaySenhasAtendidas() {
+    // Resetar as variáveis para zero antes de começar o loop
+    this.atendidaGeral = 0;
+    this.atendidaPrior = 0;
+    this.atendidaExame = 0;
+  
+    for (let senha of this.senhasChamadas) {
+      console.log('Ícone da senha:', senha.icon);
+      if (senha.icon === 'person') {
+        this.atendidaGeral++;
+        console.log('atendidaGeral:', this.atendidaGeral);
+      } else if (senha.icon === 'warning') {
+        this.atendidaPrior++;
+        console.log('atendidaPrior:', this.atendidaPrior);
+      } else {
+        this.atendidaExame++;
+        console.log('atendidaExame:', this.atendidaExame);
+      }
+    }
+    this.relatorioSenhasAtendidas.push({...this.senhasChamadas});
+    console.log(this.relatorioSenhasAtendidas);
+  }
+  
   constructor() {}
 }
 // Remove o próximo da fila (o primeiro elemento do array)
-      // this.senhasChamadas.shift();
+// this.senhasChamadas.shift();
