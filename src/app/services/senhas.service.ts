@@ -20,7 +20,7 @@ export class SenhasService {
   public relatorioSenhasAtendidas: any[] = [];
 
   // method to add new password to password array
-  senhaRetirada(tipoSenha: string = '') {
+   senhaRetirada(tipoSenha: string = '') {
     let senhaRetiradaObjeto = {
       icon: '',
       color: '',
@@ -42,6 +42,7 @@ export class SenhasService {
       senhaRetiradaObjeto.color = 'dark';
       senhaRetiradaObjeto.tipo_senha = 'SG';
       this.senhasArray.SG.push({ ...senhaRetiradaObjeto });
+      this.alertaObrigado();
     } else if (tipoSenha == 'SP') {
       this.somaPrior();
       senhaRetiradaObjeto.senha =
@@ -55,6 +56,7 @@ export class SenhasService {
       senhaRetiradaObjeto.color = 'danger';
       senhaRetiradaObjeto.tipo_senha = 'SP';
       this.senhasArray.SP.push({ ...senhaRetiradaObjeto });
+      this.alertaObrigado();
     } else if (tipoSenha == 'SE') {
       this.somaExame();
       senhaRetiradaObjeto.senha =
@@ -68,6 +70,7 @@ export class SenhasService {
       senhaRetiradaObjeto.color = 'dark';
       senhaRetiradaObjeto.tipo_senha = 'SE';
       this.senhasArray.SE.push({ ...senhaRetiradaObjeto });
+      this.alertaObrigado();
     }
     this.senhasFaltandoChamar.push({ ...senhaRetiradaObjeto });
   }
@@ -120,6 +123,15 @@ export class SenhasService {
     }
   }
 
+  //método que chama um alerta ao retirar uma senha
+  async alertaObrigado() {
+    const alert = await this.alertController.create({
+      header: 'Obrigado(a)!',
+      message: 'Agora é só aguardar.',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
   //methods to count the number of times the password has been called
   somaGeral() {
     this.senhasGeral++;
@@ -155,17 +167,23 @@ export class SenhasService {
   async limparPainel() {
     if (this.senhasChamadas.length >= 4) {
       this.senhasChamadas = [];
+      const alert = await this.alertController.create({
+        header: 'Aviso',
+        message: 'Painel limpo com sucesso ;)',
+        buttons: ['OK'],
+      });
+      await alert.present();
     } else if (this.senhasChamadas.length === 0) {
       const alert = await this.alertController.create({
         header: 'Aviso',
-        message: 'Ainda não há senhas no painel',
+        message: 'Ainda não há senhas no painel do guichê.',
         buttons: ['OK'],
       });
       await alert.present();
     } else {
       const alert = await this.alertController.create({
         header: 'Aviso',
-        message: 'Ainda há espaço no painel',
+        message: 'Ainda há espaço no painel.',
         buttons: ['OK'],
       });
       await alert.present();
