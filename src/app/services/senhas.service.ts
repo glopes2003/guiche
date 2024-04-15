@@ -17,7 +17,7 @@ export class SenhasService {
   public senhasFaltandoChamar: any[] = [];
   public senhasChamadas: any[] = [];
   public relatorioSenhasAtendidas: any[] = [];
-  
+
   // method to add new password to password array
   senhaRetirada(tipoSenha: string = '') {
     let senhaRetiradaObjeto = {
@@ -69,11 +69,11 @@ export class SenhasService {
       this.senhasArray.SE.push({ ...senhaRetiradaObjeto });
     }
     this.senhasFaltandoChamar.push({ ...senhaRetiradaObjeto });
-   }
+  }
 
   //method to call password
   chamarSenha() {
-    if (this.senhasFaltandoChamar.length == 0) {
+    if (this.senhasFaltandoChamar.length === 0) {
       alert('Ainda não há senhas no painel de chamada!');
     } else {
       let senhaPrioritariaEncontrada = false;
@@ -94,6 +94,8 @@ export class SenhasService {
           this.senhasChamadas.push(próximaSenha);
         }
         this.displaySenhasAtendidas();
+      } else {
+        alert('O painel de chamadas está cheio. Por favor, limpe o painel.');
       }
     }
   }
@@ -142,11 +144,12 @@ export class SenhasService {
   limparPainel() {
     if (this.senhasChamadas.length >= 4) {
       this.senhasChamadas = [];
-    } else if (this.senhasChamadas.length == 0) {
+    } else if (this.senhasChamadas.length === 0) {
       alert('Ainda não há senhas no painel');
-    } else if (this.senhasChamadas.length >= 3) {
+    } else {
       alert('Ainda há espaço no painel');
     }
   }
+
   constructor() {}
 }
