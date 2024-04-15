@@ -18,7 +18,7 @@ export class SenhasService {
   public senhasChamadas: any[] = [];
   public relatorioSenhasAtendidas: any[] = [];
 
-  // Função para adicionar uma nova senha ao array e exibir na tela
+  // method to add new password to password array
   senhaRetirada(tipoSenha: string = '') {
     let senhaRetiradaObjeto = {
       icon: '',
@@ -67,12 +67,13 @@ export class SenhasService {
     this.senhasFaltandoChamar.push({ ...senhaRetiradaObjeto });
     this.displaySenha();
   }
-  //methods
+
   displaySenha() {
     console.log(this.senhasArray);
     console.log(this.senhasFaltandoChamar);
   }
 
+  //method to call password
   chamarSenha() {
     if (this.senhasFaltandoChamar.length == 0) {
       alert('Ainda não há senhas no painel de chamada!');
@@ -84,7 +85,7 @@ export class SenhasService {
           this.senhasChamadas.push(senha);
           this.removerSenhaDoArray(senha);
           senhaPrioritariaEncontrada = true;
-          break; // Sai do loop assim que a senha prioritária for encontrada
+          break;
         }
       }
       if (!senhaPrioritariaEncontrada && this.senhasFaltandoChamar.length > 0) {
@@ -97,13 +98,16 @@ export class SenhasService {
       alert('Limpe o painel!');
     }
   }
+
+  //method to remove password from array
   removerSenhaDoArray(senha: any) {
-    // Encontra o índice da senha no array atual e a remove
     const index = this.senhasFaltandoChamar.findIndex((s) => s === senha);
     if (index !== -1) {
       this.senhasFaltandoChamar.splice(index, 1);
     }
   }
+
+  //methods to count the number of times the password has been called
   somaGeral() {
     this.senhasGeral++;
     this.senhasTotal++;
@@ -116,19 +120,9 @@ export class SenhasService {
     this.senhasExame++;
     this.senhasTotal++;
   }
-
-  limparPainel() {
-    if (this.senhasChamadas.length >= 4) {
-      this.senhasChamadas = [];
-    } else if (this.senhasChamadas.length == 0) {
-      alert('Ainda não há senhas no painel');
-    } else if (this.senhasChamadas.length >= 3) {
-      alert('Ainda há espaço no painel');
-    }
-  }
-
+  
+  //method to count the number of times the password was answered
   displaySenhasAtendidas() {
-    // Resetar as variáveis para zero antes de começar o loop
     this.atendidaGeral = 0;
     this.atendidaPrior = 0;
     this.atendidaExame = 0;
@@ -149,8 +143,16 @@ export class SenhasService {
     this.relatorioSenhasAtendidas.push({...this.senhasChamadas});
     console.log(this.relatorioSenhasAtendidas);
   }
-  
+
+  //method for cleaning the window panel
+  limparPainel() {
+    if (this.senhasChamadas.length >= 4) {
+      this.senhasChamadas = [];
+    } else if (this.senhasChamadas.length == 0) {
+      alert('Ainda não há senhas no painel');
+    } else if (this.senhasChamadas.length >= 3) {
+      alert('Ainda há espaço no painel');
+    }
+  }
   constructor() {}
 }
-// Remove o próximo da fila (o primeiro elemento do array)
-// this.senhasChamadas.shift();
