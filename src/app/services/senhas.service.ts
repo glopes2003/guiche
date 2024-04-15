@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',
@@ -72,12 +73,17 @@ export class SenhasService {
   }
 
   //method to call password
-  chamarSenha() {
+  async chamarSenha() {
     if (this.senhasFaltandoChamar.length === 0) {
-      alert('Ainda não há senhas no painel de chamada!');
+      const alert = await this.alertController.create({
+        header: 'Aviso',
+        message: 'Ainda não há senhas no painel de chamada!',
+        buttons: ['OK'],
+      });
+      await alert.present();
     } else {
       let senhaPrioritariaEncontrada = false;
-      if (this.senhasChamadas.length <= 4) {
+      if (this.senhasChamadas.length <= 4 ) {
         for (let senha of this.senhasFaltandoChamar) {
           if (senha.icon === 'warning') {
             this.senhasChamadas.push(senha);
@@ -95,7 +101,13 @@ export class SenhasService {
         }
         this.displaySenhasAtendidas();
       } else {
-        alert('O painel de chamadas está cheio. Por favor, limpe o painel.');
+        const alert = await this.alertController.create({
+          header: 'Aviso',
+          message:
+            'O painel de chamadas está cheio. Por favor, limpe-o.',
+          buttons: ['OK'],
+        });
+        await alert.present();
       }
     }
   }
@@ -139,17 +151,25 @@ export class SenhasService {
     }
     this.relatorioSenhasAtendidas.push({ ...this.senhasChamadas });
   }
-
   //method for cleaning the window panel
-  limparPainel() {
+  async limparPainel() {
     if (this.senhasChamadas.length >= 4) {
       this.senhasChamadas = [];
     } else if (this.senhasChamadas.length === 0) {
-      alert('Ainda não há senhas no painel');
+      const alert = await this.alertController.create({
+        header: 'Aviso',
+        message: 'Ainda não há senhas no painel',
+        buttons: ['OK'],
+      });
+      await alert.present();
     } else {
-      alert('Ainda há espaço no painel');
+      const alert = await this.alertController.create({
+        header: 'Aviso',
+        message: 'Ainda há espaço no painel',
+        buttons: ['OK'],
+      });
+      await alert.present();
     }
   }
-
-  constructor() {}
+  constructor(private alertController: AlertController) {}
 }
