@@ -8,32 +8,37 @@
   <ion-card>
     <ion-card-content>
       <ion-list>
-        <ion-title>Relatório Geral:</ion-title>
+        <ion-title>Emissão</ion-title>
         <ion-item>Senhas Emitidas: {{senhasService.senhasTotal}}</ion-item>
-        <ion-label>Senhas emitidas por prioridade:</ion-label>
         <ion-item>Senhas Geral: {{senhasService.senhasGeral}}</ion-item>
         <ion-item>Senhas Prioritárias: {{senhasService.senhasPrior}}</ion-item>
-        <ion-item>Senhas Exame:  {{senhasService.senhasExame}}</ion-item>
-        <ion-item>Senhas Atendidas: {{senhasService.relatorioSenhasAtendidas.length}} </ion-item>
-        <ion-label>Senhas atendidas por prioridade:  </ion-label>
+        <ion-item>Senhas Exame: {{senhasService.senhasExame}}</ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-title>Atendimento</ion-title>
+        <ion-item
+          >Senhas Atendidas: {{senhasService.relatorioSenhasAtendidas.length}}
+        </ion-item>
         <ion-item>Senhas Geral: {{senhasService.atendidaGeral}} </ion-item>
-        <ion-item>Senhas Prioritárias:{{senhasService.atendidaPrior}} </ion-item>
+        <ion-item
+          >Senhas Prioritárias:{{senhasService.atendidaPrior}}
+        </ion-item>
         <ion-item>Senhas Exame:{{senhasService.atendidaExame}} </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-content>
       <ion-list>
         <ion-label>Relatório detalhado:</ion-label>
-        <ion-item>Numeração:</ion-item>
-        <ion-item>Tipo de senha:</ion-item>
-        <ion-item>Senhas Prioritárias: </ion-item>
+        <ion-item>Numeração: </ion-item>
+        <ion-item>Tipo de senha:  </ion-item>
+        <ion-item>Senhas Prioritárias:  {{this.senhasService.senhasPrior}}</ion-item>
         <ion-item>Data e Hora da emissão:</ion-item>
         <ion-item>Data e Hora do Atendimento:</ion-item>
         <ion-item>Guichê responsável:</ion-item>
       </ion-list>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>
