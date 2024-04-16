@@ -6,10 +6,9 @@
 </div>
 <br>
 
-Docente: Clóves Rocha
+Docente: João Ferreira
 <br>
-Estudantes: David Philien Labanca, Giovana Lopes, Gustavo Luiz,
-João Vitor Castro e Renan Laurindo
+Estudantes: David Philien Labanca, Giovana Lopes, Gustavo Luiz e Geraldo Neto.
 <br>
 <br>
 
