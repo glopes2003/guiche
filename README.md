@@ -10,7 +10,6 @@ Docente: João Ferreira
 <br>
 Estudante: Giovana Lopes
 <br>
-<br>
 
 ><h3>Tecnologias utilizadas:</h3>
 
