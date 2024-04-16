@@ -24,10 +24,11 @@ Estudantes: David Philien Labanca, Giovana Lopes, Gustavo Luiz e Geraldo Neto.
 
  - Através de uma IDE no seu pc:
    
-       Ao clonar o repositório e abrí-lo em alguma IDE de sua preferência:
+   - Ao clonar o repositório e abrí-lo em alguma IDE de sua preferência:
+   
          1. npm install
-         2. ionic serve (roda a aplicação na web)
-       Obs: certifique-se de estar dentro da pasta da aplicação que contém todo o conteúdo antes de executar esses passos
+         2. ionic serve
+   OBS: certifique-se de estar dentro da pasta da aplicação que contém todo o conteúdo antes de executar esses passos
    
 - Através do deploy na Vercel: https://guiche-deploy.vercel.app
 
