@@ -8,7 +8,7 @@
 
 Docente: João Ferreira
 <br>
-Estudantes: David Philien Labanca, Giovana Lopes, Gustavo Luiz e Geraldo Neto.
+Estudante: Giovana Lopes
 <br>
 <br>
 
