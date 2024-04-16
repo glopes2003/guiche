@@ -30,7 +30,7 @@ João Vitor Castro e Renan Laurindo
          2. ionic serve (roda a aplicação na web)
        Obs: certifique-se de estar dentro da pasta da aplicação que contém todo o conteúdo antes de executar esses passos
    
-- Através do deploy na Vercel: https://ong-connect-deploy.vercel.app/
+- Através do deploy na Vercel: https://guiche-deploy.vercel.app
 
 <br>
 
