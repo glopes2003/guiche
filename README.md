@@ -17,7 +17,7 @@ Estudante: Giovana Lopes
      <img align="center" alt="Angular" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angular/angular-original.svg" width="60px" height="60px"/>
      <img align="center" alt="VsCode" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="50px" height="50px"/>
 </div>
-<br>
+
 
 ><h3> Como rodar a aplicação: </h3>
 
